@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inquiry Form</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f3f6fb;
+      padding: 20px;
+    }
+
+    .form-container {
+      width: 100%;
+      max-width: 500px;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      text-align: center;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #64748b;
+      margin-bottom: 25px;
+      font-size: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 7px;
+      font-size: 15px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    button {
+      width: 100%;
+      padding: 13px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 7px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    #message {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 480px) {
+      .form-container {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<script
+  type="text/javascript"
+  id="hs-script-loader"
+  async
+  defer
+  src="//js-na2.hs-scripts.com/247710832.js">
+</script>
+
+<body>
+  <div class="form-container">
+    <h2>Inquiry Form</h2>
+    <p class="subtitle">Please fill in your details below.</p>
+
+    <form id="inquiryForm">
+      <div class="form-group">
+        <label for="name">Full Name *</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Enter full name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter email address"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="contact">Contact Number *</label>
+        <input
+          type="tel"
+          id="contact"
+          name="contact"
+          placeholder="Enter contact number"
+          pattern="[0-9]{10}"
+          maxlength="10"
+          inputmode="numeric"
+          title="Enter a valid 10-digit mobile number"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="rfeName">RFE Name *</label>
+        <input
+          type="text"
+          id="rfeName"
+          name="rfeName"
+          placeholder="Enter RFE name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="businessName">Business Name *</label>
+        <input
+          type="text"
+          id="businessName"
+          name="businessName"
+          placeholder="Enter business name"
+          required
+        />
+      </div>
+
+      <button type="submit">Submit Inquiry</button>
+      <p id="message" role="status"></p>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("inquiryForm");
+    const message = document.getElementById("message");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const inquiry = {
+        name: document.getElementById("name").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        contact: document.getElementById("contact").value.trim(),
+        rfeName: document.getElementById("rfeName").value.trim(),
+        businessName: document.getElementById("businessName").value.trim()
+      };
+
+      console.log("Inquiry Details:", inquiry);
+
+      message.style.color = "green";
+      message.textContent =
+        "Form validated successfully! Connect a backend to save your inquiry.";
+
+      // Send inquiry to your backend API here.
+
+      // form.reset();
+    });
+  </script>
+</body>
+</html>
